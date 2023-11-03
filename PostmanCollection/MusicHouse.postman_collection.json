@@ -1,0 +1,205 @@
+{
+	"info": {
+		"_postman_id": "abb3fb2e-6cb1-4f4a-8b9c-266f2534f1b8",
+		"name": "MusicHouse",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30844681"
+	},
+	"item": [
+		{
+			"name": "AddProduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Validate response contains name and category fields\", function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData).to.have.property(\"name\");\r",
+							"    pm.expect(jsonData).to.have.property(\"category\");\r",
+							"    pm.collectionVariables.set(\"productName\", jsonData.name);\r",
+							"    pm.collectionVariables.set(\"productCategory\", jsonData.category.name);\r",
+							"    pm.collectionVariables.set(\"productId\", jsonData.id);\r",
+							"    \r",
+							"\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "image",
+							"type": "file",
+							"src": "/C:/Users/Anlly/Downloads/yamaha-c80-guitarra-clasica-con-cuerdas-de-nylon.jpg"
+						},
+						{
+							"key": "name",
+							"value": "Classic guitar c180 yamaha",
+							"type": "text"
+						},
+						{
+							"key": "price",
+							"value": "1235000",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "2",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{host}}/api/products",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProduct",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('getProductResposeTest', function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"\r",
+							"    pm.expect(jsonData[0].name.trim()).to.eql(pm.environment.get('productName'));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/{{productName}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"{{productName}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GetProductsByCategory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('getProductResposeTest', function() {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    var hasProduct = jsonData.some(function (item) {\r",
+							"       \r",
+							"        return item.name.trim() === pm.environment.get('productName');\r",
+							"    });\r",
+							"    pm.expect(hasProduct).to.be.true;\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/{{productCategory}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"{{productCategory}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DeleteProductById",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"\r",
+							"pm.test(\"deleteProductTest\", function () {\r",
+							"    var productId = pm.collectionVariables.get('productId'); // Replace with the actual product ID you expect\r",
+							"     console.log(productId)\r",
+							"    var expectedResponse = \"Deleted product id= \" + productId; // The complete expected message\r",
+							"    var actualResponse = pm.response.text(); // Get the response text\r",
+							"    pm.expect(actualResponse).to.eql(expectedResponse); // Check if the response matches the expected message exactly\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{host}}/api/products/{{productId}}",
+					"host": [
+						"{{host}}"
+					],
+					"path": [
+						"api",
+						"products",
+						"{{productId}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "productName",
+			"value": ""
+		},
+		{
+			"key": "productCategory",
+			"value": ""
+		},
+		{
+			"key": "productId",
+			"value": ""
+		}
+	]
+}

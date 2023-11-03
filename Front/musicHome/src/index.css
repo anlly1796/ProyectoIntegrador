@@ -1,0 +1,103 @@
+
+
+
+*{
+    font-family: Playpen, Raleway, Roboto;
+}
+
+body{
+    background-color: #D7D9D7;
+    
+}
+.navbar{
+    background-color: #798C8C;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    
+}
+
+.logo{
+    margin-left: 20px;
+}
+.slogan{
+    margin-left: 20px;
+    margin-right: 10px;
+    font-weight: 800;
+    font-size: medium;
+    
+}
+.navbar-brand{
+    display: flex;
+    align-items: flex-end; 
+    
+}
+.collapse form{
+    width: 70%;
+}
+.form-inline .form-control{
+    width: 90%;
+}
+.collapse form input{
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #F2EFDF;
+    font-weight: 400;
+    border-width: 2px;
+    border-color: #59554C;
+    color: #59554C;
+    
+    margin-top: 10px;
+}
+
+.nav-link button{
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #F2EFDF;
+    font-weight: 800;
+    border-width: 3px;
+    border-color: #59554C;
+    color: #59554C;
+    margin-top: 10px;
+}
+ #navbarContent{
+    justify-content: space-around;
+ }
+
+ .nav-item.nav-link.active button{
+    background-color:  #59554C; 
+    color:  #F2EFDF; 
+    border-color: #F2EFDF;
+}
+.homeTitle{
+    text-align: center;
+    margin: 20px;
+    font-weight: 600;
+}
+
+.card-img-top{
+    height: 14.4rem;
+    
+}
+#row-products{
+    margin-top: auto;
+    margin-left: auto;
+    margin-right: auto;
+}
+.card-title{
+    text-align: center;
+    font-weight: 600;
+    font-size: medium;
+    
+}
+.card-text{
+    font-weight: 800;
+    text-align: center;
+    font-family: Roboto;
+    font-size: small;
+}
+.card-body{
+    background-color: #F2EFDF;
+}

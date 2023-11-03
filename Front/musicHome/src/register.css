@@ -1,0 +1,40 @@
+body{
+    background-color: #D7D9D7;
+}
+h1{
+    
+    font-weight: 600;
+    margin: 10px;
+    
+}
+form{
+    margin: 30px;
+    
+}
+.form-label .title{
+    text-align: left;
+}
+form label{
+    font-weight: 600;
+    font-size: large;
+    margin: 8px;
+}
+form .form-control {
+    border-color: #59554C;
+    border-width: 2px;
+    margin-bottom: 5px;
+}
+
+form .form-select{
+    border-color: #59554C;
+    border-width: 2px;
+}
+form .btn{
+    border-color: #59554C;
+    background-color: #AEBFBE;
+    font-weight: 600;
+    width: 7rem;
+}
+.alert{
+    margin: 40px;
+}
